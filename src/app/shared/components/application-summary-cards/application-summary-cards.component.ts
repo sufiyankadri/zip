@@ -1,4 +1,4 @@
-﻿import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { ApplicationSummary } from '../../../core/models/service.models';
@@ -12,17 +12,23 @@ import { ApplicationSummary } from '../../../core/models/service.models';
 })
 export class ApplicationSummaryCardsComponent {
   readonly summary = input.required<ApplicationSummary>();
+  readonly allLink = input<string | null>('/applications');
+  readonly allClicked = output<void>();
 
   protected readonly cardConfig = [
-    { key: 'totalSubmitted', label: 'Submitted', icon: 'assignment_turned_in' },
-    { key: 'pending', label: 'Pending', icon: 'hourglass_empty' },
-    { key: 'approved', label: 'Approved', icon: 'check_circle' },
-    { key: 'rejected', label: 'Rejected', icon: 'cancel' },
-    { key: 'readyForDownload', label: 'Ready', icon: 'download' },
+    { key: 'totalSubmitted', label: 'Submitted', icon: 'inventory_2', tone: 'total' },
+    { key: 'pending', label: 'Pending', icon: 'pending_actions', tone: 'pending' },
+    { key: 'approved', label: 'Approved', icon: 'task_alt', tone: 'approved' },
+    { key: 'rejected', label: 'Rejected', icon: 'cancel', tone: 'rejected' },
+    { key: 'readyForDownload', label: 'Ready', icon: 'download_done', tone: 'ready' },
   ] as const;
 
   getValue(key: keyof ApplicationSummary): number {
     return this.summary()[key];
+  }
+
+  onAllClick(): void {
+    this.allClicked.emit();
   }
 }
 

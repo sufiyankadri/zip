@@ -6,12 +6,23 @@
 .badge { border-radius: var(--radius-full); padding: 0.2rem 0.55rem; font-size: 0.62rem; font-weight: 700; }
 .badge.mode { background: var(--color-primary-50); color: var(--color-primary-600); }
 .badge.samagra { background: var(--color-success-light); color: var(--color-success); }
-.sticky-actions { position: fixed; bottom: 5rem; left: 50%; transform: translateX(-50%); width: min(430px, 100%); box-sizing: border-box; padding: 0.75rem 1rem; }
-.action-btn { width: 100%; display: flex; align-items: center; justify-content: center; gap: 0.5rem; border-radius: var(--radius-lg); padding: 0.85rem; font-size: 0.95rem; font-weight: 700; }
+.sticky-actions { position: static; width: 100%; box-sizing: border-box; padding: 0 1rem 0.5rem; display: flex; justify-content: flex-end; margin-top: 0.1rem; }
+.action-btn { width: auto; min-width: 10.5rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; border-radius: var(--radius-lg); padding: 0.78rem 1.15rem; font-size: 0.9rem; font-weight: 700; }
 .action-btn.primary { background: var(--color-primary-800); color: white; box-shadow: var(--shadow-lg); }
 .action-btn .material-symbols-outlined { font-size: 1.1rem; }
+.apply-form-card { margin: 0 1rem 1rem; border: 1px solid var(--border-light); border-radius: var(--radius-xl); background: var(--surface-card); box-shadow: var(--shadow-md); padding: 0.9rem; }
+.form-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.65rem; }
+.form-head h2 { margin: 0; font-size: 0.9rem; font-weight: 700; color: var(--text-primary); }
+.close-btn { width: 2rem; height: 2rem; border-radius: var(--radius-full); border: 1px solid var(--border-light); display: grid; place-items: center; color: var(--text-secondary); background: var(--surface-card); }
+.apply-form-card form { display: grid; gap: 0.65rem; }
+.form-field { display: grid; gap: 0.3rem; }
+.form-field span { font-size: 0.68rem; font-weight: 600; color: var(--text-secondary); }
+.form-field input, .form-field textarea { border: 1px solid var(--border-medium); border-radius: var(--radius-md); padding: 0.62rem 0.72rem; font-size: 0.82rem; color: var(--text-primary); background: #fff; }
+.form-field input:focus, .form-field textarea:focus { outline: none; border-color: var(--color-primary-500); box-shadow: 0 0 0 3px rgba(47, 109, 225, 0.15); }
+.field-error { color: var(--color-error); font-size: 0.66rem; font-weight: 600; margin-top: -0.05rem; }
+.submit-btn { margin-top: 0.15rem; border-radius: var(--radius-md); padding: 0.72rem 0.95rem; font-size: 0.82rem; font-weight: 700; background: linear-gradient(135deg, var(--color-primary-700), var(--color-primary-500)); color: #fff; box-shadow: var(--shadow-sm); }
 .not-found { margin: 2rem 1rem; border: 2px dashed var(--border-light); border-radius: var(--radius-lg); padding: 2rem; text-align: center; }
 .not-found .material-symbols-outlined { font-size: 2.5rem; color: var(--text-muted); }
 .not-found h2 { margin: 0.5rem 0 0; font-size: 0.95rem; }
 .not-found p { margin: 0.25rem 0 0; color: var(--text-secondary); font-size: 0.75rem; }
-@media (max-width: 480px) { .sticky-actions { bottom: 4.5rem; } }
+@media (max-width: 480px) { .sticky-actions { padding-bottom: 0.75rem; } }

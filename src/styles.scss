@@ -1,19 +1,19 @@
 /* ───── MP eSeva Design System v2 — Premium ───── */
 :root {
-  /* Primary palette — deeper, richer blues */
-  --color-primary-900: #0C1527;
-  --color-primary-800: #132040;
-  --color-primary-700: #1A2F5A;
-  --color-primary-600: #2563EB;
-  --color-primary-500: #3B82F6;
-  --color-primary-400: #60A5FA;
-  --color-primary-100: #DBEAFE;
-  --color-primary-50: #EFF6FF;
+  /* Primary palette — professional indigo-blue */
+  --color-primary-900: #0B1426;
+  --color-primary-800: #10203B;
+  --color-primary-700: #18335A;
+  --color-primary-600: #2452C6;
+  --color-primary-500: #2F6DE1;
+  --color-primary-400: #5A8EF0;
+  --color-primary-100: #DEE8FF;
+  --color-primary-50: #F1F5FF;
 
-  /* Accent — vibrant saffron */
-  --color-accent: #F97316;
-  --color-accent-dark: #EA580C;
-  --color-accent-light: #FFF7ED;
+  /* Accent — clean amber */
+  --color-accent: #EA8A1C;
+  --color-accent-dark: #C96A0A;
+  --color-accent-light: #FFF6E9;
 
   /* Semantic */
   --color-success: #059669;
@@ -23,22 +23,23 @@
   --color-error: #DC2626;
   --color-error-light: #FEF2F2;
 
-  /* Surfaces — subtle warmth */
-  --surface-bg: #F1F5F9;
+  /* Surfaces */
+  --surface-bg: #EEF3FA;
   --surface-card: #FFFFFF;
   --surface-raised: #FFFFFF;
   --surface-glass: rgba(255, 255, 255, 0.7);
+  --brand-header-bg: #173A6A;
 
-  /* Text — crisp contrast */
-  --text-primary: #0F172A;
-  --text-secondary: #475569;
-  --text-muted: #94A3B8;
+  /* Text */
+  --text-primary: #0F1C33;
+  --text-secondary: #43536B;
+  --text-muted: #7A889E;
   --text-on-dark: #FFFFFF;
   --text-on-accent: #FFFFFF;
 
   /* Borders */
-  --border-light: #E2E8F0;
-  --border-medium: #CBD5E1;
+  --border-light: #DCE4EF;
+  --border-medium: #C5D0DF;
 
   /* Shadows — layered depth */
   --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.04);
@@ -51,19 +52,19 @@
   --shadow-glow: 0 0 20px rgba(37, 99, 235, 0.15);
 
   /* Radius */
-  --radius-xs: 6px;
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 20px;
-  --radius-2xl: 24px;
+  --radius-xs: 8px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --radius-xl: 22px;
+  --radius-2xl: 28px;
   --radius-full: 9999px;
 
   /* Spacing */
   --page-gutter: 1rem;
 
   /* Typography */
-  --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-family: 'Inter', 'Segoe UI', 'Roboto', system-ui, -apple-system, sans-serif;
 }
 
 *,

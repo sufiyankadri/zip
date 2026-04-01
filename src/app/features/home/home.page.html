@@ -17,6 +17,9 @@
   <div class="samagra-overlap">
     <app-eligibility-widget
       [state]="eligibility"
+      [samagraId]="samagraId()"
+      (samagraIdChange)="onSamagraIdChange($event)"
+      (searchWithSamagra)="onSamagraSearch($event)"
       (openEligibleSchemes)="openEligibleSchemes()"
       (checkWithoutSamagra)="checkWithoutSamagra()"
     />
@@ -60,12 +63,12 @@
 
     @if (browseTab() === 'category') {
       <app-category-card-grid
-        [categories]="categories"
+        [categories]="filteredCategories()"
         (categorySelect)="openCategory($event.id)"
       />
     } @else {
       <app-department-list
-        [departments]="departments"
+        [departments]="filteredDepartments()"
         title="विभाग"
         subtitle="विभाग अनुसार सेवाएं ब्राउज़ करें"
         (departmentSelect)="openDepartment($event.id)"

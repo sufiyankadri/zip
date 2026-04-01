@@ -1,0 +1,57 @@
+<div class="apply-page">
+  <app-top-header
+    [showBack]="true"
+    title="आवेदन फॉर्म"
+    subtitle="आवेदन जमा करें"
+  />
+
+  @if (service()) {
+    <section class="service-info">
+      <p class="service-name">{{ service()!.serviceName }}</p>
+    </section>
+
+    <section class="form-card">
+      <form [formGroup]="applicationForm" (ngSubmit)="submitApplication()">
+        <label class="form-field">
+          <span>आवेदक का नाम</span>
+          <input type="text" formControlName="applicantName" placeholder="पूरा नाम दर्ज करें" />
+          @if (formSubmitAttempted() && applicationForm.controls.applicantName.invalid) {
+            <small class="field-error">कृपया सही नाम दर्ज करें (कम से कम 2 अक्षर)</small>
+          }
+        </label>
+
+        <label class="form-field">
+          <span>मोबाइल नंबर</span>
+          <input type="tel" formControlName="mobile" placeholder="10 अंकों का मोबाइल नंबर" />
+          @if (formSubmitAttempted() && applicationForm.controls.mobile.invalid) {
+            <small class="field-error">कृपया 10 अंकों का मोबाइल नंबर दर्ज करें</small>
+          }
+        </label>
+
+        <label class="form-field">
+          <span>समग्र आईडी (वैकल्पिक)</span>
+          <input type="text" formControlName="samagraId" placeholder="9 अंकों की समग्र आईडी" />
+          @if (formSubmitAttempted() && applicationForm.controls.samagraId.invalid) {
+            <small class="field-error">समग्र आईडी में सिर्फ 9 अंक होने चाहिए</small>
+          }
+        </label>
+
+        <label class="form-field">
+          <span>पता</span>
+          <textarea rows="3" formControlName="address" placeholder="पूरा पता दर्ज करें"></textarea>
+          @if (formSubmitAttempted() && applicationForm.controls.address.invalid) {
+            <small class="field-error">कृपया पूरा पता दर्ज करें (कम से कम 8 अक्षर)</small>
+          }
+        </label>
+
+        <button type="submit" class="submit-btn">Submit Application</button>
+      </form>
+    </section>
+  } @else {
+    <section class="not-found">
+      <span class="material-symbols-outlined">error_outline</span>
+      <h2>सेवा नहीं मिली</h2>
+      <p>कृपया वापस जाएं और सही सेवा चुनें।</p>
+    </section>
+  }
+</div>

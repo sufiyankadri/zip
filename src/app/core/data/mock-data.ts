@@ -1,4 +1,4 @@
-﻿import {
+import {
   ApplicationSummary,
   BannerItem,
   Category,
@@ -844,8 +844,8 @@ export const HOME_BANNERS: BannerItem[] = [
   },
   {
     id: 'banner-3',
-    title: 'Track, Download और Receipt एक ही प्लेटफॉर्म पर',
-    subtitle: 'Citizen-friendly mobile-first experience',
+    title: 'Track, Download और Receipt अब एक ही प्लेटफॉर्म पर',
+    subtitle: 'Citizen-friendly, seamless mobile-first experience',
     image: '',
     ctaLabel: 'अभी करें',
   },

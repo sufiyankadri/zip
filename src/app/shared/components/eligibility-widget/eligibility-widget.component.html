@@ -17,9 +17,16 @@
       <span class="material-symbols-outlined input-icon">fingerprint</span>
       <div class="input-area">
         <span class="input-label">समग्र आईडी (9 अंक) दर्ज करें</span>
-        <span class="input-value">{{ state().samagraId }}</span>
+        <input
+          type="text"
+          class="input-value-input"
+          [value]="samagraId()"
+          placeholder="उदा. 1234-5678-901"
+          (input)="onSamagraInput($any($event.target).value)"
+          (keydown.enter)="onSearch()"
+        />
       </div>
-      <button type="button" class="search-btn" (click)="openEligibleSchemes.emit()">खोजें</button>
+      <button type="button" class="search-btn" (click)="onSearch()">खोजें</button>
     </div>
   }
 

@@ -1,6 +1,7 @@
 ﻿import { Routes } from '@angular/router';
 
 import { ApplicationsPage } from './features/applications/applications.page';
+import { ApplyPage } from './features/apply/apply.page';
 import { BrowsePage } from './features/browse/browse.page';
 import { ServiceGroupPage } from './features/group/service-group.page';
 import { HomePage } from './features/home/home.page';
@@ -23,6 +24,7 @@ export const routes: Routes = [
       { path: 'services', component: ServiceListingPage },
       { path: 'search', component: SearchPage },
       { path: 'service/:id', component: ServiceDetailPage },
+      { path: 'service/:id/apply', component: ApplyPage },
       { path: 'applications', component: ApplicationsPage },
       { path: 'profile', component: ProfilePage },
       { path: '**', redirectTo: 'home' },

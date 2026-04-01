@@ -1,4 +1,4 @@
-﻿import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 
 import {
   CATEGORIES,
@@ -179,7 +179,9 @@ export class ServiceRepositoryService {
 
     return {
       services: SERVICES.filter((service) => {
-        return `${service.serviceName} ${service.shortDescription}`.toLowerCase().includes(sanitizedQuery);
+        return `${service.serviceName} ${service.shortDescription} ${service.actionsAvailable.join(' ')} ${service.processSteps.join(' ')}`
+          .toLowerCase()
+          .includes(sanitizedQuery);
       }),
       categories: CATEGORIES.filter((category) => {
         return `${category.nameHindi} ${category.nameEnglish} ${category.description}`

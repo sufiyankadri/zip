@@ -1,4 +1,4 @@
-﻿export type ServiceMode = 'Online' | 'Portal' | 'Assisted';
+export type ServiceMode = 'Online' | 'Portal' | 'Assisted';
 
 export type ServiceAction = 'Apply' | 'Track' | 'Download' | 'Receipt';
 
@@ -74,6 +74,20 @@ export interface EligibilityState {
   citizenName: string;
   samagraId: string;
   eligibleSchemeCount: number;
+}
+
+export type ApplicationStatus = 'Pending Verification' | 'Approved' | 'Ready for Download' | 'Rejected';
+
+export interface SubmittedApplication {
+  id: string;
+  serviceId: string;
+  service: string;
+  applicantName: string;
+  mobile: string;
+  samagraId?: string;
+  address: string;
+  status: ApplicationStatus;
+  updatedAt: string;
 }
 
 export interface ServiceFilters {

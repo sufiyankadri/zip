@@ -1,4 +1,4 @@
-﻿import { Component, inject, signal, OnInit, OnDestroy } from '@angular/core';
+import { Component, computed, inject, signal, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ServiceRepositoryService } from '../../core/services/service-repository.service';
@@ -39,10 +39,32 @@ export class HomePage implements OnInit, OnDestroy {
   protected readonly banners = this.repository.getHomeBanners();
   protected readonly applicationSummary = this.repository.getDefaultApplicationSummary();
   protected readonly eligibility = this.repository.getDefaultEligibilityState();
+  protected readonly samagraId = signal('');
 
   protected readonly browseTab = this.discoveryState.homeBrowseTab;
   protected readonly searchQuery = signal(this.discoveryState.globalSearchQuery());
   protected readonly currentSlide = signal(0);
+  protected readonly filteredCategories = computed(() => {
+    const query = this.searchQuery().trim().toLowerCase();
+    if (!query) {
+      return this.categories;
+    }
+
+    return this.categories.filter((category) =>
+      `${category.nameHindi} ${category.nameEnglish} ${category.description}`.toLowerCase().includes(query),
+    );
+  });
+
+  protected readonly filteredDepartments = computed(() => {
+    const query = this.searchQuery().trim().toLowerCase();
+    if (!query) {
+      return this.departments;
+    }
+
+    return this.departments.filter((department) =>
+      `${department.name} ${department.description}`.toLowerCase().includes(query),
+    );
+  });
 
   ngOnInit(): void {
     this.slideInterval = setInterval(() => {
@@ -68,12 +90,16 @@ export class HomePage implements OnInit, OnDestroy {
 
   onSearchChange(query: string): void {
     this.searchQuery.set(query);
+    this.discoveryState.setGlobalSearchQuery(query.trim());
   }
 
   onSearchSubmit(query: string): void {
-    this.discoveryState.setGlobalSearchQuery(query);
-    this.discoveryState.addRecentSearch(query);
-    this.router.navigate(['/search'], { queryParams: { q: query } });
+    const sanitizedQuery = query.trim();
+    this.searchQuery.set(sanitizedQuery);
+    this.discoveryState.setGlobalSearchQuery(sanitizedQuery);
+    if (sanitizedQuery) {
+      this.discoveryState.addRecentSearch(sanitizedQuery);
+    }
   }
 
   onBrowseTabChange(tab: 'category' | 'department'): void {
@@ -92,6 +118,27 @@ export class HomePage implements OnInit, OnDestroy {
     this.router.navigate(['/services'], {
       queryParams: {
         samagraEnabled: true,
+      },
+    });
+  }
+
+  onSamagraIdChange(value: string): void {
+    this.samagraId.set(value);
+  }
+
+  onSamagraSearch(query: string): void {
+    const sanitizedQuery = query.trim();
+    if (!sanitizedQuery) {
+      this.openEligibleSchemes();
+      return;
+    }
+
+    this.discoveryState.setGlobalSearchQuery(sanitizedQuery);
+    this.discoveryState.addRecentSearch(sanitizedQuery);
+    this.router.navigate(['/services'], {
+      queryParams: {
+        samagraEnabled: true,
+        q: sanitizedQuery,
       },
     });
   }

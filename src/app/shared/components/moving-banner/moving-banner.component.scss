@@ -2,13 +2,49 @@
 .banner-section {
   margin: 0.5rem 1rem 0.75rem;
   border-radius: var(--radius-lg);
-  background: linear-gradient(135deg, var(--color-accent-light) 0%, #FFF1E6 100%);
-  border: 1px solid rgba(254, 215, 170, 0.5);
+  background: #ffffff;
+  border: 1px solid var(--border-light);
   overflow: hidden;
-  box-shadow: var(--shadow-xs);
+  box-shadow: var(--shadow-card);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: stretch;
 }
-.banner-track { display: flex; width: max-content; animation: marquee 30s linear infinite; }
-.banner-item { display: flex; align-items: center; gap: 0.5rem; padding: 0.55rem 1rem; border-right: 1px solid rgba(254, 215, 170, 0.4); flex-shrink: 0; }
-.banner-icon { color: var(--color-accent); font-size: 1rem; flex-shrink: 0; }
-.title { margin: 0; white-space: nowrap; font-size: 0.72rem; font-weight: 700; color: var(--text-primary); }
-.subtitle { margin: 0; white-space: nowrap; font-size: 0.62rem; color: var(--text-secondary); }
+.news-chip {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.45rem 0.55rem;
+  background: linear-gradient(180deg, #1f4d8f 0%, #163d73 100%);
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+  position: relative;
+  z-index: 2;
+}
+.news-chip .material-symbols-outlined { font-size: 0.84rem; color: #ffffff; }
+.news-chip p { margin: 0; font-size: 0.56rem; font-weight: 700; color: #ffffff; letter-spacing: 0.05em; text-transform: uppercase; }
+.ticker-viewport { overflow: hidden; position: relative; z-index: 1; }
+.banner-track { display: flex; width: max-content; animation: marquee 32s linear infinite; padding: 0.18rem 0; }
+.banner-section:hover .banner-track { animation-play-state: paused; }
+.banner-item {
+  display: flex;
+  align-items: center;
+  gap: 0.48rem;
+  padding: 0.45rem 0.8rem;
+  border-right: 1px solid #e8edf5;
+  flex-shrink: 0;
+}
+.banner-icon {
+  color: var(--color-primary-600);
+  font-size: 0.86rem;
+  flex-shrink: 0;
+  background: #edf2ff;
+  border-radius: var(--radius-full);
+  width: 1.35rem;
+  height: 1.35rem;
+  display: grid;
+  place-items: center;
+}
+.title { margin: 0; white-space: nowrap; font-size: 0.68rem; font-weight: 700; color: var(--text-primary); }
+.subtitle { margin: 0; white-space: nowrap; font-size: 0.58rem; color: var(--text-secondary); }

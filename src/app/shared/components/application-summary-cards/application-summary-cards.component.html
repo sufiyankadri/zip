@@ -1,11 +1,15 @@
 <section class="summary-wrap">
   <div class="section-title-row">
     <h2>मेरी आवेदन</h2>
-    <a routerLink="/applications">सभी →</a>
+    @if (allLink()) {
+      <a [routerLink]="allLink()">सभी →</a>
+    } @else {
+      <button type="button" class="all-btn" (click)="onAllClick()">सभी →</button>
+    }
   </div>
   <div class="cards-scroll no-scrollbar">
     @for (card of cardConfig; track card.key) {
-      <article class="summary-card">
+      <article class="summary-card" [attr.data-tone]="card.tone">
         <span class="icon-wrap"><span class="material-symbols-outlined">{{ card.icon }}</span></span>
         <p class="value">{{ getValue(card.key) }}</p>
         <p class="label">{{ card.label }}</p>

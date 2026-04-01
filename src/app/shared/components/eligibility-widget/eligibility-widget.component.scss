@@ -1,29 +1,29 @@
 :host { display: block; }
 .eligibility-card {
   margin: 0.75rem 1rem;
-  padding: 1.1rem;
+  padding: 0.85rem;
   border-radius: var(--radius-2xl);
   background: linear-gradient(145deg, rgba(239, 246, 255, 0.95) 0%, rgba(219, 234, 254, 0.9) 100%);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(191, 219, 254, 0.6);
   box-shadow: var(--shadow-md);
 }
-.card-top { display: flex; align-items: flex-start; gap: 0.65rem; margin-bottom: 0.85rem; }
+.card-top { display: flex; align-items: flex-start; gap: 0.55rem; margin-bottom: 0.65rem; }
 .card-icon-wrap {
-  width: 2.5rem; height: 2.5rem;
-  border-radius: var(--radius-lg);
+  width: 2.15rem; height: 2.15rem;
+  border-radius: var(--radius-md);
   background: linear-gradient(135deg, var(--color-primary-600) 0%, var(--color-primary-500) 100%);
   color: white; display: grid; place-items: center; flex-shrink: 0;
   box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
 }
-.card-icon-wrap .material-symbols-outlined { font-size: 1.2rem; }
-.card-top h2 { margin: 0; font-size: 0.95rem; font-weight: 800; color: var(--text-primary); letter-spacing: -0.01em; }
-.card-top p { margin: 0.15rem 0 0; font-size: 0.72rem; color: var(--text-secondary); }
+.card-icon-wrap .material-symbols-outlined { font-size: 1.05rem; }
+.card-top h2 { margin: 0; font-size: 0.88rem; font-weight: 800; color: var(--text-primary); letter-spacing: -0.01em; }
+.card-top p { margin: 0.1rem 0 0; font-size: 0.66rem; color: var(--text-secondary); }
 .scheme-badge {
   margin-left: auto; flex-shrink: 0;
   background: linear-gradient(135deg, var(--color-primary-600), var(--color-primary-500));
-  color: white; font-size: 0.62rem; font-weight: 700;
-  padding: 0.25rem 0.65rem; border-radius: var(--radius-full);
+  color: white; font-size: 0.56rem; font-weight: 700;
+  padding: 0.2rem 0.5rem; border-radius: var(--radius-full);
   box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
   animation: pulse-soft 2.5s ease-in-out infinite;
 }
@@ -31,23 +31,36 @@
   display: flex; align-items: center; gap: 0.6rem;
   background: var(--surface-card);
   border: 1.5px solid var(--border-light);
-  border-radius: var(--radius-lg);
-  padding: 0.65rem 0.85rem; margin-bottom: 0.65rem;
+  border-radius: var(--radius-md);
+  padding: 0.52rem 0.7rem; margin-bottom: 0.52rem;
   box-shadow: var(--shadow-xs);
   transition: border-color 0.2s;
 }
 .samagra-input-row:hover { border-color: var(--color-primary-400); }
-.input-icon { color: var(--color-primary-500); font-size: 1.3rem; }
+.input-icon { color: var(--color-primary-500); font-size: 1.12rem; }
 .input-area { flex: 1; min-width: 0; }
-.input-label { display: block; font-size: 0.65rem; color: var(--text-muted); font-weight: 500; }
+.input-label { display: block; font-size: 0.59rem; color: var(--text-muted); font-weight: 500; }
 .input-value { display: block; font-size: 0.9rem; font-weight: 800; color: var(--text-primary); margin-top: 0.1rem; letter-spacing: 0.02em; }
+.input-value-input {
+  width: 100%;
+  margin-top: 0.05rem;
+  border: none;
+  background: transparent;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.25;
+  letter-spacing: 0.01em;
+}
+.input-value-input:focus { outline: none; }
+.input-value-input::placeholder { color: var(--text-muted); font-weight: 600; }
 .search-btn {
   background: linear-gradient(135deg, var(--color-primary-600), var(--color-primary-500));
-  color: white; padding: 0.5rem 1.1rem;
-  border-radius: var(--radius-md); font-size: 0.78rem; font-weight: 700; flex-shrink: 0;
+  color: white; padding: 0.42rem 0.82rem;
+  border-radius: var(--radius-sm); font-size: 0.68rem; font-weight: 700; flex-shrink: 0;
   box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
   transition: all 0.25s;
 }
 .search-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3); }
-.alt-link { font-size: 0.72rem; color: var(--color-primary-600); font-weight: 700; transition: color 0.2s; }
+.alt-link { font-size: 0.67rem; color: var(--color-primary-600); font-weight: 700; transition: color 0.2s; }
 .alt-link:hover { color: var(--color-primary-500); }

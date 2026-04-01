@@ -16,7 +16,7 @@
   width: 100%;
   min-height: calc(100dvh - 2rem);
   background: var(--surface-bg);
-  border-radius: 32px;
+  border-radius: 30px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -30,6 +30,7 @@
 
 .content-area {
   flex: 1;
+  background: var(--surface-bg);
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;

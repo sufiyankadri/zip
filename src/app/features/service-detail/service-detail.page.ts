@@ -42,4 +42,8 @@ export class ServiceDetailPage {
       },
     });
   }
+
+  protected openApplyForm(): void {
+    this.router.navigate(['/service', this.serviceId(), 'apply']);
+  }
 }

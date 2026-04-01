@@ -6,25 +6,109 @@
     backRoute="/home"
   />
 
-  <app-application-summary-cards [summary]="summary" />
+  <app-application-summary-cards [summary]="summary()" [allLink]="null" (allClicked)="scrollToRecentApplications()" />
 
-  <section class="timeline-section">
-    <h2>हाल की अर्जियां</h2>
+  <section class="progress-overview">
+    <div class="overview-head">
+      <div>
+        <h2>Pipeline View</h2>
+        <p>Live application processing snapshot</p>
+      </div>
+      <span class="total-count">{{ summary().totalSubmitted }} applications</span>
+    </div>
+    <div class="pipeline-board no-scrollbar">
+      <article class="stage queued">
+        <p>Queued</p>
+        <strong>{{ progressStats().queued }}</strong>
+      </article>
+      <span class="pipe-arrow">→</span>
+      <article class="stage review">
+        <p>Verification</p>
+        <strong>{{ progressStats().review }}</strong>
+      </article>
+      <span class="pipe-arrow">→</span>
+      <article class="stage approved">
+        <p>Approved</p>
+        <strong>{{ progressStats().approved }}</strong>
+      </article>
+      <span class="pipe-arrow">→</span>
+      <article class="stage delivered">
+        <p>Delivered</p>
+        <strong>{{ progressStats().delivered }}</strong>
+      </article>
+    </div>
+  </section>
+
+  <section #timelineSection class="timeline-section">
+    <div class="timeline-head">
+      <h2>हाल की अर्जियां</h2>
+      <span>टैप करके पूरी प्रोग्रेस देखें</span>
+    </div>
 
     <div class="timeline-list">
-      @for (application of sampleApplications; track application.id) {
-        <article class="timeline-card">
+      @for (application of applicationTimeline(); track application.id) {
+        <article class="timeline-card" (click)="openProgressSheet(application.id)">
           <div class="status-indicator" [class.approved]="application.status === 'Approved'" [class.pending]="application.status === 'Pending Verification'" [class.ready]="application.status === 'Ready for Download'"></div>
           <div class="card-content">
-            <p class="app-id">{{ application.id }}</p>
+            <div class="id-row">
+              <p class="app-id">{{ application.id }}</p>
+              <span class="status-pill" [class.approved]="application.status === 'Approved'" [class.pending]="application.status === 'Pending Verification'" [class.ready]="application.status === 'Ready for Download'">{{ getStatusLabel(application.status) }}</span>
+            </div>
             <h3>{{ application.service }}</h3>
             <div class="row">
-              <span class="status-text">{{ application.status }}</span>
+              <span class="status-text">Updated</span>
               <span class="date">{{ application.updatedAt }}</span>
+            </div>
+            <div class="stepper">
+              <span class="step" [class.done]="getStatusStep(application.status) >= 1"></span>
+              <span class="step" [class.done]="getStatusStep(application.status) >= 2"></span>
+              <span class="step" [class.done]="getStatusStep(application.status) >= 3"></span>
+              <span class="step" [class.done]="getStatusStep(application.status) >= 4"></span>
             </div>
           </div>
         </article>
       }
     </div>
   </section>
+
+  @if (selectedApplication()) {
+    <section class="sheet-backdrop" (click)="closeProgressSheet()"></section>
+    <section class="progress-sheet">
+      <div class="sheet-handle"></div>
+      <div class="sheet-head">
+        <div>
+          <p class="sheet-id">{{ selectedApplication()!.id }}</p>
+          <h3>{{ selectedApplication()!.service }}</h3>
+        </div>
+        <button type="button" class="sheet-close" (click)="closeProgressSheet()" aria-label="Close progress details">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+
+      <div class="pipeline-graph">
+        @for (step of getProgressDetails(selectedApplication()!.status, selectedApplication()!.updatedAt); track step.label; let i = $index) {
+          <div class="graph-step">
+            <span class="node" [class.done]="step.done">{{ i + 1 }}</span>
+            <div class="node-content" [class.done]="step.done">
+              <p>{{ step.label }}</p>
+              <span>{{ step.date }}</span>
+            </div>
+          </div>
+        }
+      </div>
+
+      @if (canDownload(selectedApplication()!.status)) {
+        <div class="download-row">
+          <div class="doc-meta">
+            <p>Final Document</p>
+            <span>{{ selectedApplication()!.id }}-receipt.txt</span>
+          </div>
+          <button type="button" class="download-btn" (click)="downloadReceipt()">
+            <span class="material-symbols-outlined">download</span>
+            Download
+          </button>
+        </div>
+      }
+    </section>
+  }
 </div>
