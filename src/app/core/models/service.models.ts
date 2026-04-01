@@ -76,7 +76,7 @@ export interface EligibilityState {
   eligibleSchemeCount: number;
 }
 
-export type ApplicationStatus = 'Pending Verification' | 'Approved' | 'Ready for Download' | 'Rejected';
+export type ApplicationStatus = 'Submitted' | 'Pending' | 'In Process' | 'Completed';
 
 export interface SubmittedApplication {
   id: string;

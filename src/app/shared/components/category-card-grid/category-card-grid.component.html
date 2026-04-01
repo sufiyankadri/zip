@@ -1,12 +1,30 @@
 <section class="grid-section">
   <div class="section-head"><h2>मुख्य श्रेणियां</h2></div>
-  <div class="category-grid">
-    @for (category of categories(); track category.id) {
+  <div class="category-grid" [class.top-grid]="homeEnhanced()">
+    @for (category of topCategories(); track category.id) {
       <button type="button" class="category-card" (click)="categorySelect.emit(category)">
         <span class="icon-badge"><span class="material-symbols-outlined icon">{{ category.icon }}</span></span>
         <h3>{{ category.nameHindi }}</h3>
         <p class="eng-name">{{ category.nameEnglish }}</p>
       </button>
+    }
+
+    @if (moreCategories().length > 0) {
+      <article class="category-card more-category-card" aria-label="More categories">
+        <div class="more-category-viewport no-scrollbar">
+          <div class="more-category-track">
+            @for (category of scrollingCategories(); track category.id + '-' + $index) {
+              <button type="button" class="more-category-item" (click)="categorySelect.emit(category)">
+                <span class="material-symbols-outlined">{{ category.icon }}</span>
+                <p>{{ category.nameHindi }}</p>
+              </button>
+            }
+          </div>
+        </div>
+        <div class="more-category-label">
+          <button type="button" class="more-category-cta" (click)="viewAll.emit()">सभी श्रेणियां →</button>
+        </div>
+      </article>
     }
   </div>
 </section>

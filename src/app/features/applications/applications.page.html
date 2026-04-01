@@ -8,37 +8,6 @@
 
   <app-application-summary-cards [summary]="summary()" [allLink]="null" (allClicked)="scrollToRecentApplications()" />
 
-  <section class="progress-overview">
-    <div class="overview-head">
-      <div>
-        <h2>Pipeline View</h2>
-        <p>Live application processing snapshot</p>
-      </div>
-      <span class="total-count">{{ summary().totalSubmitted }} applications</span>
-    </div>
-    <div class="pipeline-board no-scrollbar">
-      <article class="stage queued">
-        <p>Queued</p>
-        <strong>{{ progressStats().queued }}</strong>
-      </article>
-      <span class="pipe-arrow">→</span>
-      <article class="stage review">
-        <p>Verification</p>
-        <strong>{{ progressStats().review }}</strong>
-      </article>
-      <span class="pipe-arrow">→</span>
-      <article class="stage approved">
-        <p>Approved</p>
-        <strong>{{ progressStats().approved }}</strong>
-      </article>
-      <span class="pipe-arrow">→</span>
-      <article class="stage delivered">
-        <p>Delivered</p>
-        <strong>{{ progressStats().delivered }}</strong>
-      </article>
-    </div>
-  </section>
-
   <section #timelineSection class="timeline-section">
     <div class="timeline-head">
       <h2>हाल की अर्जियां</h2>
@@ -48,11 +17,11 @@
     <div class="timeline-list">
       @for (application of applicationTimeline(); track application.id) {
         <article class="timeline-card" (click)="openProgressSheet(application.id)">
-          <div class="status-indicator" [class.approved]="application.status === 'Approved'" [class.pending]="application.status === 'Pending Verification'" [class.ready]="application.status === 'Ready for Download'"></div>
+          <div class="status-indicator" [class.approved]="application.status === 'Completed'" [class.pending]="application.status === 'Pending'" [class.ready]="application.status === 'In Process'"></div>
           <div class="card-content">
             <div class="id-row">
               <p class="app-id">{{ application.id }}</p>
-              <span class="status-pill" [class.approved]="application.status === 'Approved'" [class.pending]="application.status === 'Pending Verification'" [class.ready]="application.status === 'Ready for Download'">{{ getStatusLabel(application.status) }}</span>
+              <span class="status-pill" [class.approved]="application.status === 'Completed'" [class.pending]="application.status === 'Pending'" [class.ready]="application.status === 'In Process'">{{ getStatusLabel(application.status) }}</span>
             </div>
             <h3>{{ application.service }}</h3>
             <div class="row">

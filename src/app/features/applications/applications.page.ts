@@ -25,10 +25,10 @@ export class ApplicationsPage {
 
     return {
       totalSubmitted: this.baseSummary.totalSubmitted + submittedCount,
-      pending: this.baseSummary.pending + counts['Pending Verification'],
-      approved: this.baseSummary.approved + counts.Approved,
-      rejected: this.baseSummary.rejected + counts.Rejected,
-      readyForDownload: this.baseSummary.readyForDownload + counts['Ready for Download'],
+      pending: this.baseSummary.pending + counts.Pending,
+      approved: this.baseSummary.approved + counts['In Process'],
+      rejected: this.baseSummary.rejected + counts.Submitted,
+      readyForDownload: this.baseSummary.readyForDownload + counts.Completed,
     };
   });
 
@@ -36,19 +36,19 @@ export class ApplicationsPage {
     {
       id: 'APP-220145',
       service: 'आय प्रमाणपत्र आवेदन',
-      status: 'Pending Verification',
+      status: 'Pending',
       updatedAt: '19 Mar 2026',
     },
     {
       id: 'APP-220011',
       service: 'राशन कार्ड सदस्य संशोधन',
-      status: 'Approved',
+      status: 'In Process',
       updatedAt: '15 Mar 2026',
     },
     {
       id: 'APP-219878',
       service: 'ड्राइविंग लाइसेंस नवीनीकरण',
-      status: 'Ready for Download',
+      status: 'Completed',
       updatedAt: '13 Mar 2026',
     },
   ];
@@ -76,13 +76,16 @@ export class ApplicationsPage {
 
   protected getStatusStep(status: string): number {
     const safeStatus = status as ApplicationStatus;
-    if (safeStatus === 'Pending Verification') {
+    if (safeStatus === 'Submitted') {
+      return 1;
+    }
+    if (safeStatus === 'Pending') {
       return 2;
     }
-    if (safeStatus === 'Approved') {
+    if (safeStatus === 'In Process') {
       return 3;
     }
-    if (safeStatus === 'Ready for Download') {
+    if (safeStatus === 'Completed') {
       return 4;
     }
     return 1;
@@ -90,16 +93,16 @@ export class ApplicationsPage {
 
   protected getStatusLabel(status: string): string {
     const safeStatus = status as ApplicationStatus;
-    if (safeStatus === 'Pending Verification') {
-      return 'जांच जारी';
+    if (safeStatus === 'Submitted') {
+      return 'Submitted';
     }
-    if (safeStatus === 'Approved') {
-      return 'स्वीकृत';
+    if (safeStatus === 'Pending') {
+      return 'Pending';
     }
-    if (safeStatus === 'Ready for Download') {
-      return 'डाउनलोड के लिए तैयार';
+    if (safeStatus === 'In Process') {
+      return 'In Process';
     }
-    return 'अस्वीकृत';
+    return 'Completed';
   }
 
   protected getPipelineStepLabel(index: number): string {
@@ -141,7 +144,7 @@ export class ApplicationsPage {
 
   protected canDownload(status: string): boolean {
     const safeStatus = status as ApplicationStatus;
-    return safeStatus === 'Ready for Download';
+    return safeStatus === 'Completed';
   }
 
   protected downloadReceipt(): void {

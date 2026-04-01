@@ -1,6 +1,6 @@
 <section class="quick-section">
   <div class="section-head"><h2>त्वरित कार्रवाई</h2></div>
-  <div class="quick-grid">
+  <div class="quick-grid no-scrollbar">
     @for (action of actions(); track action.id) {
       <button type="button" class="quick-tile" [class.active]="selectedAction() === action.action" (click)="toggle(action.action)">
         <span class="tile-icon"><span class="material-symbols-outlined">{{ action.icon }}</span></span>

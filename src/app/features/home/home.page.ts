@@ -114,6 +114,14 @@ export class HomePage implements OnInit, OnDestroy {
     this.router.navigate(['/group', 'department', departmentId]);
   }
 
+  openAllCategories(): void {
+    this.router.navigate(['/browse/category/all']);
+  }
+
+  openAllServices(): void {
+    this.router.navigate(['/services']);
+  }
+
   openEligibleSchemes(): void {
     this.router.navigate(['/services'], {
       queryParams: {

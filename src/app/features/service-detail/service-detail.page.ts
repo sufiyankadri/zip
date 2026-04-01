@@ -44,6 +44,9 @@ export class ServiceDetailPage {
   }
 
   protected openApplyForm(): void {
+    if (!this.serviceId()) {
+      return;
+    }
     this.router.navigate(['/service', this.serviceId(), 'apply']);
   }
 }

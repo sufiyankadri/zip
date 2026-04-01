@@ -56,23 +56,27 @@
 
   <app-application-summary-cards [summary]="applicationSummary" />
 
-  <app-moving-banner [banners]="banners" />
-
   <section class="browse-surface">
     <app-browse-toggle [selected]="browseTab()" (selectedChange)="onBrowseTabChange($event)" />
 
     @if (browseTab() === 'category') {
       <app-category-card-grid
         [categories]="filteredCategories()"
+        [homeEnhanced]="true"
+        (viewAll)="openAllCategories()"
         (categorySelect)="openCategory($event.id)"
       />
     } @else {
       <app-department-list
         [departments]="filteredDepartments()"
+        [homeEnhanced]="true"
         title="विभाग"
         subtitle="विभाग अनुसार सेवाएं ब्राउज़ करें"
+        (viewAll)="openAllServices()"
         (departmentSelect)="openDepartment($event.id)"
       />
     }
   </section>
+
+  <app-moving-banner [banners]="banners" />
 </div>

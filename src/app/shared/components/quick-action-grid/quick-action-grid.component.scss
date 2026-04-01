@@ -1,26 +1,32 @@
 :host { display: block; }
 .quick-section { padding: 0.75rem 1rem 0; }
-.section-head h2 { margin: 0 0 0.7rem; font-size: 0.95rem; font-weight: 800; letter-spacing: -0.01em; }
-.quick-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.6rem; }
+.section-head h2 { margin: 0 0 0.55rem; font-size: 0.9rem; font-weight: 800; letter-spacing: -0.01em; }
+.quick-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.4rem;
+}
 .quick-tile {
   border: 1px solid rgba(226, 232, 240, 0.5);
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-lg);
   background: var(--surface-card);
-  padding: 0.9rem; text-align: center;
+  min-height: 88px;
+  padding: 0.5rem 0.35rem;
+  text-align: center;
   box-shadow: var(--shadow-card);
   transition: all 0.25s;
 }
 .quick-tile:hover { box-shadow: var(--shadow-card-hover); transform: translateY(-2px); }
 .quick-tile:active { transform: scale(0.96); }
 .tile-icon {
-  width: 3rem; height: 3rem;
-  border-radius: var(--radius-lg);
+  width: 2.15rem; height: 2.15rem;
+  border-radius: var(--radius-md);
   background: linear-gradient(135deg, var(--color-primary-50), #DBEAFE);
-  display: inline-grid; place-items: center; margin-bottom: 0.45rem;
+  display: inline-grid; place-items: center; margin-bottom: 0.3rem;
 }
-.tile-icon .material-symbols-outlined { color: var(--color-primary-600); font-size: 1.35rem; }
-.quick-tile .label { margin: 0; color: var(--text-primary); font-size: 0.72rem; font-weight: 700; }
-.quick-tile .count { margin: 0.15rem 0 0; color: var(--text-muted); font-size: 0.6rem; font-weight: 600; }
+.tile-icon .material-symbols-outlined { color: var(--color-primary-600); font-size: 1rem; }
+.quick-tile .label { margin: 0; color: var(--text-primary); font-size: 0.56rem; font-weight: 700; line-height: 1.2; }
+.quick-tile .count { margin: 0.08rem 0 0; color: var(--text-muted); font-size: 0.56rem; font-weight: 700; }
 .quick-tile.active {
   border-color: var(--color-primary-400);
   background: linear-gradient(145deg, var(--color-primary-50), #DBEAFE);

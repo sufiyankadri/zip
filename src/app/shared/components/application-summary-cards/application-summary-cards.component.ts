@@ -16,11 +16,10 @@ export class ApplicationSummaryCardsComponent {
   readonly allClicked = output<void>();
 
   protected readonly cardConfig = [
-    { key: 'totalSubmitted', label: 'Submitted', icon: 'inventory_2', tone: 'total' },
+    { key: 'rejected', label: 'Submitted', icon: 'inventory_2', tone: 'submitted' },
     { key: 'pending', label: 'Pending', icon: 'pending_actions', tone: 'pending' },
-    { key: 'approved', label: 'Approved', icon: 'task_alt', tone: 'approved' },
-    { key: 'rejected', label: 'Rejected', icon: 'cancel', tone: 'rejected' },
-    { key: 'readyForDownload', label: 'Ready', icon: 'download_done', tone: 'ready' },
+    { key: 'approved', label: 'In Process', icon: 'task_alt', tone: 'inprocess' },
+    { key: 'readyForDownload', label: 'Completed', icon: 'download_done', tone: 'completed' },
   ] as const;
 
   getValue(key: keyof ApplicationSummary): number {

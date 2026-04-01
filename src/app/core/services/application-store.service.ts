@@ -26,7 +26,7 @@ export class ApplicationStoreService {
       mobile: payload.mobile.trim(),
       samagraId: payload.samagraId?.trim() || undefined,
       address: payload.address.trim(),
-      status: 'Pending Verification',
+      status: 'Submitted',
       updatedAt: this.formatDate(new Date()),
     };
 
@@ -41,10 +41,10 @@ export class ApplicationStoreService {
         return acc;
       },
       {
-        'Pending Verification': 0,
-        Approved: 0,
-        'Ready for Download': 0,
-        Rejected: 0,
+        Submitted: 0,
+        Pending: 0,
+        'In Process': 0,
+        Completed: 0,
       } as Record<ApplicationStatus, number>,
     );
   }
