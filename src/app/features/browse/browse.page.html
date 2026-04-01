@@ -1,0 +1,34 @@
+<div class="browse-page">
+  <app-top-header
+    title="सरकारी सेवाएं"
+    subtitle="Category-wise and Department-wise"
+    [showBack]="true"
+    backRoute="/home"
+  />
+
+  <div class="search-wrap">
+    <app-search-bar
+      [compact]="true"
+      [value]="query()"
+      placeholder="सेवा खोजें (Aadhaar, पासपोर्ट...)"
+      (valueChange)="onSearchChange($event)"
+      (submitted)="onSearchChange($event)"
+    />
+  </div>
+
+  <app-browse-toggle [selected]="mode()" (selectedChange)="onToggle($event)" />
+
+  @if (mode() === 'category') {
+    <app-category-card-grid
+      [categories]="filteredCategories()"
+      (categorySelect)="openCategory($event.id)"
+    />
+  } @else {
+    <app-department-list
+      [departments]="filteredDepartments()"
+      title="सभी विभाग"
+      subtitle="विभाग चुनें, फिर सेवा समूह ब्राउज़ करें"
+      (departmentSelect)="openDepartment($event.id)"
+    />
+  }
+</div>

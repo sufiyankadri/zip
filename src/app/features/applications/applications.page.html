@@ -1,0 +1,30 @@
+<div class="applications-page">
+  <app-top-header
+    title="मेरी अर्जी"
+    subtitle="ट्रैक, रिव्यू और डाउनलोड"
+    [showBack]="true"
+    backRoute="/home"
+  />
+
+  <app-application-summary-cards [summary]="summary" />
+
+  <section class="timeline-section">
+    <h2>हाल की अर्जियां</h2>
+
+    <div class="timeline-list">
+      @for (application of sampleApplications; track application.id) {
+        <article class="timeline-card">
+          <div class="status-indicator" [class.approved]="application.status === 'Approved'" [class.pending]="application.status === 'Pending Verification'" [class.ready]="application.status === 'Ready for Download'"></div>
+          <div class="card-content">
+            <p class="app-id">{{ application.id }}</p>
+            <h3>{{ application.service }}</h3>
+            <div class="row">
+              <span class="status-text">{{ application.status }}</span>
+              <span class="date">{{ application.updatedAt }}</span>
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+  </section>
+</div>

@@ -1,0 +1,23 @@
+<header class="top-header" [class.inner-page]="showBack()">
+  <div class="left-area">
+    @if (showBack()) {
+      <button type="button" class="back-btn" (click)="goBack()" aria-label="Back">
+        <span class="material-symbols-outlined">arrow_back</span>
+      </button>
+    }
+    <div class="title-wrap">
+      <h1>{{ title() }}</h1>
+      @if (subtitle()) {
+        <p>{{ subtitle() }}</p>
+      }
+    </div>
+  </div>
+
+  <div class="right-area">
+    @if (showHelp()) {
+      <button type="button" class="icon-btn" aria-label="Notifications">
+        <span class="material-symbols-outlined">notifications</span>
+      </button>
+    }
+  </div>
+</header>

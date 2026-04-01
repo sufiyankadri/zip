@@ -1,0 +1,15 @@
+:host { display: block; }
+.detail-sections { display: grid; gap: 0.6rem; padding: 0.75rem 1rem 6rem; }
+.info-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+.metric-card { border-radius: var(--radius-lg); background: var(--color-primary-800); color: var(--text-on-dark); padding: 0.85rem; }
+.metric-card.accent { background: var(--surface-card); color: var(--text-primary); border: 1px solid var(--border-light); }
+.metric-label { display: block; font-size: 0.68rem; font-weight: 600; opacity: 0.7; margin-bottom: 0.2rem; }
+.metric-card.accent .metric-label { color: var(--text-secondary); }
+.metric-value { font-size: 1.25rem; font-weight: 800; }
+.detail-card { border: 1px solid var(--border-light); border-radius: var(--radius-lg); background: var(--surface-card); padding: 0.85rem; box-shadow: var(--shadow-sm); }
+.bullet-card { background: linear-gradient(135deg, #EFF6FF, #DBEAFE); border-color: #BFDBFE; }
+.detail-card h2 { margin: 0 0 0.5rem; color: var(--text-primary); font-size: 0.88rem; font-weight: 700; }
+.detail-card p { margin: 0; color: var(--text-secondary); font-size: 0.75rem; line-height: 1.5; }
+.detail-card ul, .detail-card ol { display: grid; gap: 0.35rem; }
+.detail-card li { display: flex; align-items: flex-start; gap: 0.5rem; color: var(--text-secondary); font-size: 0.75rem; line-height: 1.45; }
+.step-num { width: 1.4rem; height: 1.4rem; border-radius: var(--radius-full); background: var(--color-primary-600); color: white; font-size: 0.62rem; font-weight: 700; display: inline-grid; place-items: center; flex-shrink: 0; }

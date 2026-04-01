@@ -1,0 +1,12 @@
+<section class="grid-section">
+  <div class="section-head"><h2>मुख्य श्रेणियां</h2></div>
+  <div class="category-grid">
+    @for (category of categories(); track category.id) {
+      <button type="button" class="category-card" (click)="categorySelect.emit(category)">
+        <span class="icon-badge"><span class="material-symbols-outlined icon">{{ category.icon }}</span></span>
+        <h3>{{ category.nameHindi }}</h3>
+        <p class="eng-name">{{ category.nameEnglish }}</p>
+      </button>
+    }
+  </div>
+</section>

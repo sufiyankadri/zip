@@ -1,0 +1,5 @@
+:host { display: block; }
+.list-wrap { display: grid; gap: 0.6rem; }
+.empty-state { border: 2px dashed var(--border-light); border-radius: var(--radius-lg); padding: 2rem 1rem; text-align: center; color: var(--text-muted); background: var(--surface-card); }
+.empty-state .material-symbols-outlined { font-size: 2rem; color: var(--text-muted); }
+.empty-state p { margin: 0.5rem 0 0; font-size: 0.78rem; }

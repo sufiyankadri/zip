@@ -1,0 +1,4 @@
+<div class="toggle-wrap" role="tablist" aria-label="Browse toggle">
+  <button type="button" role="tab" [attr.aria-selected]="selected() === 'category'" [class.active]="selected() === 'category'" (click)="setTab('category')">श्रेणी अनुसार</button>
+  <button type="button" role="tab" [attr.aria-selected]="selected() === 'department'" [class.active]="selected() === 'department'" (click)="setTab('department')">विभाग अनुसार</button>
+</div>

@@ -1,0 +1,29 @@
+<section class="eligibility-card">
+  <div class="card-top">
+    <div class="card-icon-wrap">
+      <span class="material-symbols-outlined">verified_user</span>
+    </div>
+    <div>
+      <h2>अपनी पात्रता जानें</h2>
+      <p>Samagra ID से योजनाओं की जांच करें</p>
+    </div>
+    @if (state().eligibleSchemeCount > 0) {
+      <span class="scheme-badge">{{ state().eligibleSchemeCount }} योजनाएं</span>
+    }
+  </div>
+
+  @if (state().isMockLoggedIn) {
+    <div class="samagra-input-row">
+      <span class="material-symbols-outlined input-icon">fingerprint</span>
+      <div class="input-area">
+        <span class="input-label">समग्र आईडी (9 अंक) दर्ज करें</span>
+        <span class="input-value">{{ state().samagraId }}</span>
+      </div>
+      <button type="button" class="search-btn" (click)="openEligibleSchemes.emit()">खोजें</button>
+    </div>
+  }
+
+  <button type="button" class="alt-link" (click)="checkWithoutSamagra.emit()">
+    बिना समग्र के जांचें →
+  </button>
+</section>

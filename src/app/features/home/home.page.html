@@ -1,0 +1,75 @@
+<div class="home-page">
+  <app-top-header title="MP eSeva" subtitle="मध्यप्रदेश नागरिक सेवा पोर्टल" [showBack]="false" />
+
+  <!-- Hero extension – seamless gradient continuation from header -->
+  <section class="hero-extension">
+    <div class="search-wrap">
+      <app-search-bar
+        [value]="searchQuery()"
+        placeholder="सेवा, श्रेणी या विभाग खोजें..."
+        (valueChange)="onSearchChange($event)"
+        (submitted)="onSearchSubmit($event)"
+      />
+    </div>
+  </section>
+
+  <!-- Samagra welcome box – overlapping half in hero gradient -->
+  <div class="samagra-overlap">
+    <app-eligibility-widget
+      [state]="eligibility"
+      (openEligibleSchemes)="openEligibleSchemes()"
+      (checkWithoutSamagra)="checkWithoutSamagra()"
+    />
+  </div>
+
+  <!-- Image Carousel -->
+  <section class="carousel-section">
+    <div class="carousel-viewport">
+      <div class="carousel-track" [style.transform]="'translateX(-' + currentSlide() * 100 + '%)'">
+        @for (banner of banners; track banner.id; let i = $index) {
+          <div class="carousel-slide" [attr.data-index]="i">
+            <div class="slide-content">
+              <span class="slide-number">{{ '0' + (i + 1) }}</span>
+              <h3>{{ banner.title }}</h3>
+              <p>{{ banner.subtitle }}</p>
+              <button type="button" class="slide-cta">{{ banner.ctaLabel }} →</button>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+    <div class="carousel-dots">
+      @for (banner of banners; track banner.id; let i = $index) {
+        <button
+          type="button"
+          class="dot"
+          [class.active]="currentSlide() === i"
+          (click)="goToSlide(i)"
+          [attr.aria-label]="'Slide ' + (i + 1)"
+        ></button>
+      }
+    </div>
+  </section>
+
+  <app-application-summary-cards [summary]="applicationSummary" />
+
+  <app-moving-banner [banners]="banners" />
+
+  <section class="browse-surface">
+    <app-browse-toggle [selected]="browseTab()" (selectedChange)="onBrowseTabChange($event)" />
+
+    @if (browseTab() === 'category') {
+      <app-category-card-grid
+        [categories]="categories"
+        (categorySelect)="openCategory($event.id)"
+      />
+    } @else {
+      <app-department-list
+        [departments]="departments"
+        title="विभाग"
+        subtitle="विभाग अनुसार सेवाएं ब्राउज़ करें"
+        (departmentSelect)="openDepartment($event.id)"
+      />
+    }
+  </section>
+</div>

@@ -1,0 +1,72 @@
+<div class="search-page">
+  <app-top-header title="खोजें" subtitle="सेवाएं, श्रेणियां और विभाग" [showBack]="true" />
+
+  <div class="search-wrap">
+    <app-search-bar
+      [compact]="true"
+      [value]="searchQuery()"
+      placeholder="सेवा, योजना या प्रमाणपत्र खोजें"
+      (valueChange)="onSearchChange($event)"
+      (submitted)="onSearchSubmit($event)"
+    />
+  </div>
+
+  <section class="recent-wrap">
+    <h2>हाल की खोज</h2>
+    <div class="chip-row">
+      @for (item of recentSearches(); track item) {
+        <button type="button" (click)="useRecentSearch(item)">{{ item }}</button>
+      }
+    </div>
+  </section>
+
+  @if (searchQuery().trim().length > 0) {
+    @if (hasResults()) {
+      @if (searchResults().services.length > 0) {
+        <section class="group-section">
+          <div class="section-head"><h3>सेवाएं</h3><button type="button" (click)="openAllServices()">सभी →</button></div>
+          <div class="result-list">
+            @for (service of searchResults().services.slice(0, 5); track service.id) {
+              <button type="button" class="result-card" (click)="openService(service.id)">
+                <span class="material-symbols-outlined result-icon">description</span>
+                <div><p class="title">{{ service.serviceName }}</p><p class="sub">{{ service.shortDescription }}</p></div>
+              </button>
+            }
+          </div>
+        </section>
+      }
+      @if (searchResults().categories.length > 0) {
+        <section class="group-section">
+          <div class="section-head"><h3>श्रेणियां</h3></div>
+          <div class="result-list">
+            @for (category of searchResults().categories.slice(0, 5); track category.id) {
+              <button type="button" class="result-card" (click)="openCategory(category.id)">
+                <span class="material-symbols-outlined result-icon">category</span>
+                <div><p class="title">{{ category.nameHindi }}</p><p class="sub">{{ category.nameEnglish }}</p></div>
+              </button>
+            }
+          </div>
+        </section>
+      }
+      @if (searchResults().departments.length > 0) {
+        <section class="group-section">
+          <div class="section-head"><h3>विभाग</h3></div>
+          <div class="result-list">
+            @for (department of searchResults().departments.slice(0, 5); track department.id) {
+              <button type="button" class="result-card" (click)="openDepartment(department.id)">
+                <span class="material-symbols-outlined result-icon">account_balance</span>
+                <div><p class="title">{{ department.name }}</p><p class="sub">{{ department.description }}</p></div>
+              </button>
+            }
+          </div>
+        </section>
+      }
+    } @else {
+      <section class="empty-state">
+        <span class="material-symbols-outlined">search_off</span>
+        <h3>कोई परिणाम नहीं</h3>
+        <p>आय प्रमाणपत्र, पेंशन, राशन कार्ड जैसे शब्द खोजें</p>
+      </section>
+    }
+  }
+</div>

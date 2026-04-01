@@ -1,0 +1,25 @@
+<div class="detail-sections">
+  <section class="info-metrics">
+    <div class="metric-card"><span class="metric-label">समय</span><span class="metric-value">7 दिन</span></div>
+    <div class="metric-card accent"><span class="metric-label">शुल्क</span><span class="metric-value">₹250</span></div>
+  </section>
+  <section class="detail-card bullet-card">
+    <ul>
+      @for (item of service().eligibilityPoints; track item) {
+        <li>• {{ item }}</li>
+      }
+      @for (doc of service().requiredDocuments; track doc) {
+        <li>• {{ doc }}</li>
+      }
+    </ul>
+  </section>
+  <section class="detail-card">
+    <h2>आवेदन प्रक्रिया</h2>
+    <ol>
+      @for (step of service().processSteps; track step; let i = $index) {
+        <li><span class="step-num">{{ i + 1 }}</span> {{ step }}</li>
+      }
+    </ol>
+  </section>
+  <section class="detail-card"><h2>सहायता</h2><p>{{ service().helpContact }}</p></section>
+</div>

@@ -1,0 +1,52 @@
+<div class="group-page">
+  <app-top-header
+    [showBack]="true"
+    [title]="contextType() === 'category' ? (contextCategory()?.nameHindi ?? 'सेवा समूह') : (contextDepartment()?.name ?? 'सेवा समूह')"
+    [subtitle]="contextType() === 'category' ? (contextCategory()?.nameEnglish ?? '') : (contextDepartment()?.description ?? '')"
+  />
+
+  <div class="search-wrap">
+    <app-search-bar
+      [compact]="true"
+      [value]="searchQuery()"
+      placeholder="विश्वविद्यालय या सेवा खोजें..."
+      (valueChange)="onSearchChange($event)"
+      (submitted)="onSearchSubmit($event)"
+    />
+  </div>
+
+  <app-quick-action-grid
+    [actions]="quickActions"
+    [selectedAction]="selectedAction()"
+    [actionCounts]="actionCounts()"
+    (actionSelect)="onActionChange($event)"
+  />
+
+  <app-subcategory-grid
+    [groups]="groups()"
+    [selectedGroupId]="selectedGroupId()"
+    (groupSelect)="onGroupChange($event)"
+  />
+
+  @if (contextType() === 'category') {
+    <app-department-filter-list
+      [departments]="relevantDepartments()"
+      [selectedDepartmentId]="selectedDepartmentId()"
+      (departmentSelect)="onDepartmentChange($event)"
+    />
+  }
+
+  <section class="preview-section">
+    <div class="section-head">
+      <h2>सेवा परिणाम</h2>
+      <button type="button" (click)="openFullListing()">सभी देखें →</button>
+    </div>
+    <app-service-list
+      [services]="previewServices()"
+      [departmentNameMap]="departmentNameMap()"
+      [compact]="true"
+      (viewDetails)="openService($event)"
+      (actionClick)="openService($event.serviceId)"
+    />
+  </section>
+</div>

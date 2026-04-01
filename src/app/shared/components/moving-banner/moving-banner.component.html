@@ -1,0 +1,16 @@
+<section class="banner-section" aria-label="updates banner">
+  <div class="banner-track">
+    @for (banner of banners(); track banner.id) {
+      <article class="banner-item">
+        <span class="material-symbols-outlined banner-icon">campaign</span>
+        <div><p class="title">{{ banner.title }}</p><p class="subtitle">{{ banner.subtitle }}</p></div>
+      </article>
+    }
+    @for (banner of banners(); track banner.id + '-clone') {
+      <article class="banner-item" aria-hidden="true">
+        <span class="material-symbols-outlined banner-icon">campaign</span>
+        <div><p class="title">{{ banner.title }}</p><p class="subtitle">{{ banner.subtitle }}</p></div>
+      </article>
+    }
+  </div>
+</section>

@@ -1,0 +1,14 @@
+:host { display: block; }
+.banner-section {
+  margin: 0.5rem 1rem 0.75rem;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, var(--color-accent-light) 0%, #FFF1E6 100%);
+  border: 1px solid rgba(254, 215, 170, 0.5);
+  overflow: hidden;
+  box-shadow: var(--shadow-xs);
+}
+.banner-track { display: flex; width: max-content; animation: marquee 30s linear infinite; }
+.banner-item { display: flex; align-items: center; gap: 0.5rem; padding: 0.55rem 1rem; border-right: 1px solid rgba(254, 215, 170, 0.4); flex-shrink: 0; }
+.banner-icon { color: var(--color-accent); font-size: 1rem; flex-shrink: 0; }
+.title { margin: 0; white-space: nowrap; font-size: 0.72rem; font-weight: 700; color: var(--text-primary); }
+.subtitle { margin: 0; white-space: nowrap; font-size: 0.62rem; color: var(--text-secondary); }

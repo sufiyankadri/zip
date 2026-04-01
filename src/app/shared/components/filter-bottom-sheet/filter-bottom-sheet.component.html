@@ -1,0 +1,65 @@
+﻿@if (open()) {
+  <div class="sheet-backdrop" (click)="closeSheet.emit()"></div>
+  <section class="sheet" role="dialog" aria-label="Advanced filters">
+    <div class="sheet-header">
+      <h2>Advanced Filters</h2>
+      <button type="button" (click)="closeSheet.emit()">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+
+    <div class="sheet-content">
+      <label>
+        <span>Subcategory / Group</span>
+        <select [(ngModel)]="localSelection.groupId">
+          <option [ngValue]="undefined">All groups</option>
+          @for (group of groups(); track group.id) {
+            <option [value]="group.id">{{ group.name }}</option>
+          }
+        </select>
+      </label>
+
+      <label>
+        <span>Department</span>
+        <select [(ngModel)]="localSelection.departmentId">
+          <option [ngValue]="undefined">All departments</option>
+          @for (department of departments(); track department.id) {
+            <option [value]="department.id">{{ department.name }}</option>
+          }
+        </select>
+      </label>
+
+      <label>
+        <span>Service Mode</span>
+        <select [(ngModel)]="localSelection.mode">
+          <option [ngValue]="undefined">All modes</option>
+          <option value="Online">Online</option>
+          <option value="Portal">Portal</option>
+          <option value="Assisted">Assisted</option>
+        </select>
+      </label>
+
+      <label>
+        <span>Action Type</span>
+        <select [(ngModel)]="localSelection.action">
+          <option [ngValue]="undefined">Any action</option>
+          <option value="Apply">Apply</option>
+          <option value="Track">Track</option>
+          <option value="Download">Download</option>
+          <option value="Receipt">Receipt</option>
+        </select>
+      </label>
+
+      <label class="check-label">
+        <input type="checkbox" [(ngModel)]="localSelection.samagraEnabled" />
+        <span>Samagra Enabled only</span>
+      </label>
+    </div>
+
+    <div class="sheet-actions">
+      <button type="button" class="ghost" (click)="clearFilters()">Clear</button>
+      <button type="button" class="primary" (click)="apply()">Apply Filters</button>
+    </div>
+  </section>
+}
+

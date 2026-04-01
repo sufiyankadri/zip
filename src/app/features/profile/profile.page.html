@@ -1,0 +1,29 @@
+<div class="profile-page">
+  <app-top-header title="प्रोफ़ाइल" subtitle="नागरिक खाता और प्राथमिकताएं" [showBack]="true" />
+
+  <section class="profile-card">
+    <div class="avatar">AV</div>
+    <div class="profile-info">
+      <h2>Anita Verma</h2>
+      <p>समग्र ID: 1234-5678-901</p>
+    </div>
+    <button type="button" class="edit-btn">
+      <span class="material-symbols-outlined">edit</span>
+    </button>
+  </section>
+
+  <section class="settings">
+    @for (item of settings; track item.label) {
+      <button type="button" class="setting-item">
+        <span class="setting-icon">
+          <span class="material-symbols-outlined">{{ item.icon }}</span>
+        </span>
+        <div class="setting-info">
+          <h3>{{ item.label }}</h3>
+          <p>{{ item.sublabel }}</p>
+        </div>
+        <span class="material-symbols-outlined chevron">chevron_right</span>
+      </button>
+    }
+  </section>
+</div>

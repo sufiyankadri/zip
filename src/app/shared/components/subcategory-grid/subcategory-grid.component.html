@@ -1,0 +1,12 @@
+<section class="subcat-section">
+  <div class="section-head"><h2>सेवा समूह</h2></div>
+  <div class="subcat-grid">
+    @for (group of groups(); track group.id) {
+      <button type="button" class="subcat-card" [class.active]="selectedGroupId() === group.id" (click)="toggle(group.id)">
+        <span class="material-symbols-outlined group-icon">{{ group.icon }}</span>
+        <p class="name">{{ group.name }}</p>
+        <p class="desc">{{ group.description }}</p>
+      </button>
+    }
+  </div>
+</section>

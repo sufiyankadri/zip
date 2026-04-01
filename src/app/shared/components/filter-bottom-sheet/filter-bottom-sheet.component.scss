@@ -1,0 +1,15 @@
+:host { display: block; }
+.sheet-backdrop { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.5); z-index: 80; backdrop-filter: blur(2px); }
+.sheet { position: fixed; z-index: 85; left: 50%; bottom: 0; transform: translateX(-50%); width: min(430px, 100%); border-top-left-radius: var(--radius-xl); border-top-right-radius: var(--radius-xl); background: var(--surface-card); padding: 1rem 1.25rem 1.25rem; box-sizing: border-box; box-shadow: 0 -8px 32px rgba(15,23,42,0.15); }
+.sheet-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.85rem; }
+.sheet-header h2 { margin: 0; font-size: 1rem; font-weight: 700; }
+.sheet-header button { color: var(--text-muted); }
+.sheet-content { display: grid; gap: 0.75rem; }
+label span { display: block; font-size: 0.72rem; color: var(--text-secondary); margin-bottom: 0.25rem; font-weight: 600; }
+select { width: 100%; border-radius: var(--radius-md); border: 1.5px solid var(--border-light); padding: 0.6rem 0.75rem; font-size: 0.8rem; background: var(--surface-card); color: var(--text-primary); }
+.check-label { display: flex; align-items: center; gap: 0.5rem; }
+.check-label span { margin: 0; color: var(--text-primary); font-size: 0.8rem; }
+.sheet-actions { margin-top: 1rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+.sheet-actions button { border-radius: var(--radius-md); padding: 0.65rem; font-size: 0.8rem; font-weight: 700; }
+.sheet-actions .ghost { border: 1.5px solid var(--border-medium); background: var(--surface-card); color: var(--text-primary); }
+.sheet-actions .primary { background: var(--color-primary-800); color: white; }

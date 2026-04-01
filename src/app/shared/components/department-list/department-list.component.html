@@ -1,0 +1,12 @@
+<section class="department-section">
+  <div class="section-head"><h2>{{ title() }}</h2><p>{{ subtitle() }}</p></div>
+  <div class="department-list">
+    @for (department of departments(); track department.id) {
+      <button type="button" class="department-card" (click)="departmentSelect.emit(department)">
+        <div class="dept-icon-wrap"><span class="material-symbols-outlined">account_balance</span></div>
+        <div class="dept-info"><h3>{{ department.name }}</h3><p>{{ department.description }}</p></div>
+        <span class="material-symbols-outlined chevron">chevron_right</span>
+      </button>
+    }
+  </div>
+</section>

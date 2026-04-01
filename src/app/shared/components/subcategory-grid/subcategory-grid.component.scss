@@ -1,0 +1,10 @@
+:host { display: block; }
+.subcat-section { padding: 0.75rem 1rem 0; }
+.section-head h2 { margin: 0 0 0.65rem; font-size: 0.95rem; font-weight: 700; }
+.subcat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.55rem; }
+.subcat-card { border: 1px solid var(--border-light); border-radius: var(--radius-lg); background: var(--surface-card); text-align: left; padding: 0.75rem; box-shadow: var(--shadow-card); transition: transform 0.15s; }
+.subcat-card:active { transform: scale(0.97); }
+.group-icon { font-size: 1.15rem; color: var(--color-primary-600); }
+.name { margin: 0.3rem 0 0; color: var(--text-primary); font-size: 0.78rem; font-weight: 700; line-height: 1.3; }
+.desc { margin: 0.15rem 0 0; color: var(--text-secondary); font-size: 0.65rem; line-height: 1.35; }
+.subcat-card.active { border-color: var(--color-primary-500); background: var(--color-primary-50); }

@@ -1,0 +1,17 @@
+﻿<div class="list-wrap">
+  @for (service of services(); track service.id) {
+    <app-service-card
+      [service]="service"
+      [compact]="compact()"
+      [departmentName]="getDepartmentName(service.departmentId)"
+      (viewDetails)="viewDetails.emit($event)"
+      (actionClick)="actionClick.emit($event)"
+    />
+  } @empty {
+    <div class="empty-state">
+      <span class="material-symbols-outlined">search_off</span>
+      <p>No services found in this selection.</p>
+    </div>
+  }
+</div>
+

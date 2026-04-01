@@ -1,0 +1,53 @@
+:host { display: block; }
+.service-card {
+  border: 1px solid rgba(226, 232, 240, 0.5);
+  border-radius: var(--radius-xl);
+  background: var(--surface-card);
+  box-shadow: var(--shadow-card);
+  padding: 1rem;
+  border-left: 3.5px solid var(--color-primary-600);
+  transition: all 0.25s;
+}
+.service-card:hover { box-shadow: var(--shadow-card-hover); transform: translateY(-1px); }
+.service-card.compact { padding: 0.85rem; }
+.card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.5rem; }
+h3 { margin: 0; font-size: 0.85rem; line-height: 1.35; color: var(--text-primary); cursor: pointer; font-weight: 700; letter-spacing: -0.005em; }
+.mode-badge {
+  border-radius: var(--radius-full);
+  background: #F1F5F9; color: var(--text-secondary);
+  font-size: 0.58rem; font-weight: 700;
+  padding: 0.2rem 0.55rem; flex-shrink: 0;
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
+.mode-badge.online { background: var(--color-success-light); color: var(--color-success); }
+.mode-badge.portal { background: var(--color-primary-50); color: var(--color-primary-600); }
+.description { margin: 0.35rem 0; color: var(--text-secondary); font-size: 0.72rem; line-height: 1.5; }
+.meta-row { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.65rem; }
+.dept-name { font-size: 0.62rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
+.samagra-badge {
+  display: inline-flex; align-items: center; gap: 0.2rem;
+  font-size: 0.58rem; color: var(--color-success);
+  background: var(--color-success-light);
+  padding: 0.18rem 0.5rem; border-radius: var(--radius-full); font-weight: 700;
+}
+.samagra-badge .material-symbols-outlined { font-size: 0.7rem; }
+.actions-row { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-dark));
+  color: var(--text-on-accent);
+  border-radius: var(--radius-sm); padding: 0.42rem 0.8rem;
+  font-size: 0.68rem; font-weight: 700;
+  box-shadow: 0 2px 8px rgba(249, 115, 22, 0.2);
+  transition: all 0.2s;
+}
+.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3); }
+.btn-outline {
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-sm); padding: 0.42rem 0.7rem;
+  font-size: 0.68rem; font-weight: 600;
+  color: var(--text-primary); background: var(--surface-card);
+  transition: all 0.2s;
+}
+.btn-outline:hover { border-color: var(--color-primary-400); color: var(--color-primary-600); }
+.btn-ghost { color: var(--color-primary-600); font-size: 0.68rem; font-weight: 700; padding: 0.42rem 0.5rem; margin-left: auto; transition: color 0.2s; }
+.btn-ghost:hover { color: var(--color-primary-500); }

@@ -1,0 +1,20 @@
+﻿<section class="department-filter-section">
+  <div class="section-head">
+    <h2>Relevant Departments</h2>
+    <p>Only departments with services in this context</p>
+  </div>
+
+  <div class="chips-row">
+    @for (department of departments(); track department.id) {
+      <button
+        type="button"
+        class="chip"
+        [class.active]="selectedDepartmentId() === department.id"
+        (click)="toggle(department.id)"
+      >
+        {{ department.name }}
+      </button>
+    }
+  </div>
+</section>
+

@@ -1,0 +1,8 @@
+﻿<div class="chip-scroll" role="toolbar" aria-label="Quick filters">
+  @for (chip of chips(); track chip.id) {
+    <button type="button" class="chip" [class.active]="chip.active" (click)="chipToggle.emit(chip.id)">
+      {{ chip.label }}
+    </button>
+  }
+</div>
+

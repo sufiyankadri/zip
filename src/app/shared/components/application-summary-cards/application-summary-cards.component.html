@@ -1,0 +1,15 @@
+<section class="summary-wrap">
+  <div class="section-title-row">
+    <h2>मेरी आवेदन</h2>
+    <a routerLink="/applications">सभी →</a>
+  </div>
+  <div class="cards-scroll no-scrollbar">
+    @for (card of cardConfig; track card.key) {
+      <article class="summary-card">
+        <span class="icon-wrap"><span class="material-symbols-outlined">{{ card.icon }}</span></span>
+        <p class="value">{{ getValue(card.key) }}</p>
+        <p class="label">{{ card.label }}</p>
+      </article>
+    }
+  </div>
+</section>

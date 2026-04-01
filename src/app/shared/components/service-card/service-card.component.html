@@ -1,0 +1,19 @@
+<article class="service-card" [class.compact]="compact()">
+  <div class="card-header">
+    <h3 (click)="onViewDetails()">{{ service().serviceName }}</h3>
+    <span class="mode-badge" [class.online]="service().mode === 'Online'" [class.portal]="service().mode === 'Portal'">{{ service().mode }}</span>
+  </div>
+  <p class="description">{{ service().shortDescription }}</p>
+  <div class="meta-row">
+    <span class="dept-name">{{ departmentName() }}</span>
+    @if (service().samagraEnabled) {
+      <span class="samagra-badge"><span class="material-symbols-outlined">verified</span> समग्र</span>
+    }
+  </div>
+  <div class="actions-row">
+    @if (service().actionsAvailable.includes('Apply')) { <button type="button" class="btn-primary" (click)="onAction('Apply')">आवेदन करें</button> }
+    @if (service().actionsAvailable.includes('Track')) { <button type="button" class="btn-outline" (click)="onAction('Track')">ट्रैक</button> }
+    @if (service().actionsAvailable.includes('Download')) { <button type="button" class="btn-outline" (click)="onAction('Download')">डाउनलोड</button> }
+    <button type="button" class="btn-ghost" (click)="onViewDetails()">विवरण →</button>
+  </div>
+</article>

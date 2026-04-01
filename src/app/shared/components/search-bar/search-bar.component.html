@@ -1,0 +1,10 @@
+<form class="search-shell" [class.sticky]="sticky()" [class.compact]="compact()" (submit)="onSubmit($event)">
+  <span class="material-symbols-outlined search-icon">search</span>
+  <input
+    type="text"
+    [value]="value()"
+    [placeholder]="placeholder()"
+    (input)="onInput($event)"
+    aria-label="Search services"
+  />
+</form>

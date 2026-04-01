@@ -1,0 +1,4 @@
+:host { display: block; }
+.chip-scroll { display: flex; gap: 0.4rem; overflow-x: auto; padding-bottom: 0.2rem; }
+.chip { flex-shrink: 0; border-radius: var(--radius-full); border: 1px solid var(--border-light); background: var(--surface-card); color: var(--text-secondary); font-size: 0.7rem; font-weight: 600; padding: 0.4rem 0.7rem; transition: all 0.2s; }
+.chip.active { background: var(--color-primary-600); border-color: var(--color-primary-600); color: white; }

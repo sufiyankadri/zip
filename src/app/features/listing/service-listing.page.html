@@ -1,0 +1,56 @@
+<div class="listing-page">
+  <app-top-header title="सेवा सूची" subtitle="फ़िल्टर करें और तुलना करें" [showBack]="true" />
+
+  <div class="sticky-area">
+    <app-search-bar
+      [compact]="true"
+      [value]="searchQuery()"
+      placeholder="सेवा सूची में खोजें"
+      (valueChange)="onSearchChange($event)"
+      (submitted)="onSearchSubmit($event)"
+    />
+    <div class="chips-wrap">
+      <app-filter-chips [chips]="quickChips()" (chipToggle)="onQuickChipToggle($event)" />
+    </div>
+  </div>
+
+  <section class="filter-summary">
+    <div class="summary-head">
+      <h2>फ़िल्टर</h2>
+      <button type="button" (click)="clearFilters()">रीसेट</button>
+    </div>
+    @if (activeFilterSummary().length > 0) {
+      <p class="summary-text">{{ activeFilterSummary().join(' • ') }}</p>
+    }
+    <div class="controls-row">
+      <button type="button" class="filter-btn" (click)="openAdvancedFilters()">
+        <span class="material-symbols-outlined">tune</span> एडवांस फ़िल्टर
+      </button>
+      <label>
+        <select [ngModel]="sortBy()" (ngModelChange)="onSortChange($event)">
+          <option value="relevance">प्रासंगिकता</option>
+          <option value="name">नाम</option>
+          <option value="department">विभाग</option>
+        </select>
+      </label>
+    </div>
+  </section>
+
+  <section class="service-results">
+    <app-service-list
+      [services]="filteredServices()"
+      [departmentNameMap]="departmentNameMap()"
+      (viewDetails)="openService($event)"
+      (actionClick)="openService($event.serviceId)"
+    />
+  </section>
+
+  <app-filter-bottom-sheet
+    [open]="isAdvancedSheetOpen()"
+    [groups]="availableGroups()"
+    [departments]="availableDepartments()"
+    [selected]="advancedFilters()"
+    (closeSheet)="closeAdvancedFilters()"
+    (applyFilters)="applyAdvancedFilters($event)"
+  />
+</div>
