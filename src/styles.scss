@@ -1,3 +1,11 @@
+@use '@fontsource/inter/400.css' as inter400;
+@use '@fontsource/inter/500.css' as inter500;
+@use '@fontsource/inter/600.css' as inter600;
+@use '@fontsource/inter/700.css' as inter700;
+@use '@fontsource/inter/800.css' as inter800;
+@use '@fontsource/inter/900.css' as inter900;
+@use '@fontsource/material-symbols-outlined' as symbols;
+
 /* ───── MP eSeva Design System v2 — Premium ───── */
 :root {
   /* Primary palette — professional indigo-blue */
